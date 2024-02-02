@@ -1,7 +1,5 @@
 package it.sogei.ansc.signer.rest;
 
-import java.io.IOException;
-
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -33,7 +31,8 @@ public class VerifyRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Tag(name = "verifica")
 	public Response verify(
-			@RequestBody(description = "Parametri firma", required = true, content = @Content(schema = @Schema(implementation = VerifierRequest.class))) @Valid VerifierRequest in) throws IOException {
+			@RequestBody(description = "Parametri firma", required = true, 
+			content = @Content(schema = @Schema(implementation = VerifierRequest.class)) ) @Valid VerifierRequest in) {
 		return RestHelper.handle( () -> {
 			VerifierResponse out = new VerifierResponse();
 			out.setResult(SignerConsts.VERIFY_FATAL);
@@ -49,7 +48,8 @@ public class VerifyRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Tag(name = "composizione")
 	public Response compose(
-			@RequestBody(description = "Parametri sigillo", required = true, content = @Content(schema = @Schema(implementation = VerifierRequest.class))) @Valid VerifierRequest in) throws IOException {
+			@RequestBody(description = "Parametri sigillo", required = true, 
+			content = @Content(schema = @Schema(implementation = VerifierRequest.class))) @Valid VerifierRequest in) {
 		return RestHelper.handle( () -> {
 			ComposeResponse out = new ComposeResponse();
 			out.setResult( SignerConsts.OK );

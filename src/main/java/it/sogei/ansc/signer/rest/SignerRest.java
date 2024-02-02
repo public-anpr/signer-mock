@@ -1,6 +1,5 @@
 package it.sogei.ansc.signer.rest;
 
-import java.io.IOException;
 import java.util.UUID;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -34,7 +33,7 @@ public class SignerRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Tag(name = "firma")
 	public Response sign(
-			@RequestBody(description = "Parametri firma", required = true, content = @Content(schema = @Schema(implementation = SignRequest.class))) @Valid SignRequest signerIn) throws IOException {
+			@RequestBody(description = "Parametri firma", required = true, content = @Content(schema = @Schema(implementation = SignRequest.class))) @Valid SignRequest signerIn) {
 		return RestHelper.handle( () -> {
 			SignResponse signerOut = new SignResponse();
 			signerOut.setResult( SignerConsts.OK );
@@ -50,7 +49,7 @@ public class SignerRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Tag(name = "firma")
 	public Response signpdf(
-			@RequestBody(description = "Parametri firma", required = true, content = @Content(schema = @Schema(implementation = SignPdfRequest.class))) @Valid SignPdfRequest signerIn) throws IOException {
+			@RequestBody(description = "Parametri firma", required = true, content = @Content(schema = @Schema(implementation = SignPdfRequest.class))) @Valid SignPdfRequest signerIn) {
 		return RestHelper.handle( () -> {
 			SignPdfResponse signerOut = new SignPdfResponse();
 			signerOut.setResult( SignerConsts.OK );
@@ -66,7 +65,7 @@ public class SignerRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Tag(name = "sigillo")
 	public Response sigillopdf(
-			@RequestBody(description = "Parametri sigillo", required = true, content = @Content(schema = @Schema(implementation = SigilloRequest.class))) @Valid SigilloRequest signerPdfIn) throws IOException {
+			@RequestBody(description = "Parametri sigillo", required = true, content = @Content(schema = @Schema(implementation = SigilloRequest.class))) @Valid SigilloRequest signerPdfIn) {
 		return RestHelper.handle( () -> {
 			SigilloResponse signerPdfOut = new SigilloResponse();
 			signerPdfOut.setResult( SignerConsts.OK );
